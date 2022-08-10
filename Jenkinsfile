@@ -1,7 +1,5 @@
 pipeline {
     agent any
-    environment {
-        def mypods = []
     }
     stages {
          stage('Clone to Packer Repo') {
@@ -14,7 +12,7 @@ pipeline {
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/piyushmj12/golden_image_packer']]])
                 sh "ls -lrt"
                 sh "ls scripts"
-                env.mypods = sh "ls scripts"
+              
                 
             }
         }
